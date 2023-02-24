@@ -1,33 +1,33 @@
- #include <stdio.h>
+#include <stdio.h>
 #include <windows.h>
 
 int main()
 {
 	int n = 4;
-	int a[n] = {1,2,3,4};
-	int a2[n] = {1,4,5,6};
-	int s[n*2] = {};
+	int a[4] = { 1,2,3,4 };
+	int a2[4] = { 1,4,5,6 };
 	int *arr;
+	arr = (int*)malloc(1 * sizeof(int));
 	int p = 0;
-	for(int i = 0; i < n; i ++)
+	for (int i = 0; i < n; i++)
 	{
-		for(int j = 0; j < n; j++)
+		for (int j = 0; j < n; j++)
 		{
-			if(a[i] == a2[j])
+			if (a[i] == a2[j])
 			{
-				arr = (int*)realloc(arr,sizeof(arr) * 2);
+				arr = (int*)realloc(arr, sizeof(arr) * 4);
 				arr[p] = a[i];
-				p++;
+				p++; 
 			}
 		}
 	}
-	for(int i = 0; i < p; i++)
+	for (int i = 0; i < p; i++)
 	{
 		printf("%d ", arr[i]);
 	}
 	printf(" g ");
-	
-	
+
+
 	int *arr2;
 	int p2 = 0;
 	int k = 0;
@@ -47,15 +47,18 @@ int main()
 		}
 		if (k == 0)
 		{
-			arr2 = (int*)realloc(arr2,sizeof(arr2) * 2);
+			arr2 = (int*)realloc(arr2,sizeof(arr2) * 4);
 			arr2[4 + p2] = a2[i];
 			p2++;
 		}
 		k = 0;
 	}
+
 	for (int i = 0; i < p2 + 4; i++)
 	{
 		printf("%d ", arr2[i]);
 	}
-	
+
+	free(arr2);
+
 }
